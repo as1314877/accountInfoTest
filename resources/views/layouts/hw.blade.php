@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+
     <script src="{{ asset('js/app.js') }}" defer></script>
 	<script src="{{ asset('js/function.js') }}" defer></script>
 
