@@ -5,10 +5,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form type="get" action="{{ url('/account_info/search') }}" id="searchAccount">
+            <form>
                 帳號查詢:
-                <input type="text" id="searchAccunt" name="searchAccount">
-                <button type="submit" id="subBtn" class="btn btn-primary">查詢</button>
+                <input type="text" id="account" name="account">
+                <button type="button" onClick="searchAccount()" id="subBtn" class="btn btn-primary">查詢</button>
             </form>
             <hr>
             <table class="table">
@@ -22,22 +22,8 @@
                         <th>備註</th>
                     </tr>
                 </thead>
-                <tbody>
-					{{ Log::info("123 IN:") }}
-                    @isset($resAccount)
-                    @foreach($resAccount as $a)
-                    <tr>
-                        <td>{{ $a->accoont }}</td>
-                        <td>{{ $a->name }}</td>
-                        <td>{{ $a->gender }}</td>
-                        <td>{{ $a->birthday }}</td>
-                        <td>{{ $a->email }}</td>
-                        <td>{{ $a->remark }}</td>
-                    </tr>
-
-                    @endforeach
-                    @endisset
-                </tbody>
+                <tbody id="searchItem">
+				</tbody>
             </table>
         </div>
     </div>

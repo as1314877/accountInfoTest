@@ -26,6 +26,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'AccountInfoController@index');
-Route::get('account_info/search', 'AccountInfoController@searchByAccount');
+Route::post('account_info/search', 'AccountInfoController@searchByAccount');
 Route::post('account_info/update', 'AccountInfoController@update');
 Route::post('account_info/destroy', 'AccountInfoController@destroy');

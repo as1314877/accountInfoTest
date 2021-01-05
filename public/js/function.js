@@ -73,6 +73,7 @@ function deleteAccountInfo(){
 
 function searchAccount(){
 	//call controller to update
+	$("#searchItem").empty();
 	var info = {
 		account: $('#account').val(),
 	}
@@ -81,19 +82,29 @@ function searchAccount(){
 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 		},
 		type:"POST",
-		url:"/account_info/findByAccount",
+		url:"account_info/search",
 		dataType:"json",
 		data:{
-			updateData: info
+			searchData: info
 		},
 		success:function(result){
-			$("#myEdit").modal('hide');
-			alert("successful");
-			location.reload(true);
+			if(result.length < 1) {
+				alert("查無資訊!!");
+				return;
+			}
+			for(var i = 0; i < result.length; i++){
+				$("#searchItem").append("<tr> + \
+					<td>"+ result[i]['account'] +"</td> + \
+					<td>"+ result[i]['name'] +"</td> + \
+					<td>"+ result[i]['gender'] +"</td> + \
+					<td>"+ result[i]['birthday'] +"</td> + \
+					<td>"+ result[i]['email'] +"</td> + \
+					<td>"+ result[i]['remark'] +"</td>"
+				);
+			}
 		},
 		error: function(result){
-			$("#myEdit").modal('hide');
-			alert("error");
+			console.log(result);
 		}
 	});
 }

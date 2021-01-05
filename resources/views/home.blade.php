@@ -6,6 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myCreate">新增</button>
+            <a type="button" href="/search" class="btn btn-info">查詢</a>
             <div class="modal" id="myCreate">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">

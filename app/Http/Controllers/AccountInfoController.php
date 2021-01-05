@@ -149,12 +149,15 @@ class AccountInfoController extends Controller
         return Account_info::where('account', $account)->firstOrFail();
     }
 
-    public function searchByAccount(){
+    public function searchByAccount(Request $request){
         Log::info("searchByAccount IN:");
-        $account = $_GET['searchAccunt'];
-        $resAccount = Account_info::where('account', $account)->firstOrFail();
+        $data = $request->input('searchData');
+        Log::info($data);
+        $resAccount = Account_info::where('account', $data['account'])->get();
         Log::info($resAccount);
-        return view('search', compact('resAccount', $resAccount));
+        return $resAccount;
+        // return redirect()->to('account_info/search')->with('resAccount', $resAccount);
+        // return redirect('account_info.search', compact('resAccount'));
     }
 
 
